@@ -1,40 +1,45 @@
-# BetterLyft™ 
+# LyftBetter™ 
 
 ## Deliverables
-You are building an app for a Lyft/Uber competitor
-- your models are passengers, drivers, rides
-  - a passenger has many rides
-  - a driver has many rides
-  - a ride belongs to a passenger and a driver
-    - a ride is initialized with a distance (as a float)
+You're building a new fitness tracker app:
+- your models are user, exercise, and log
+  - a user has many logs
+  - an exercise has many logs
+  - a log belongs to an exercise and a user
+
 Write out the relationships using has_many, belongs_to and has_many_through. Create the necessary methods to connect these classes.
 
-#### Passenger
-- #drivers
-  - returns all drivers a passenger has ridden with
-- #rides
-  - returns all rides a passenger has been on
-- .all
-  - returns an array of all passengers
-- #total_distance
-  - should calculate the total distance the passenger has travelled with the service
-- .premium_members
-  - should find all passengers who have travelled over 100 miles with the service
+#### User
+- a user is initialized with a name
 
-#### Driver
-- #passengers
-  - returns all passengers a driver has had
-- #rides
-  - returns all rides a driver has made
+- #logs
+  - returns all logs belonging to that user
+- #exercises
+  - returns all unique exercises performed by the user.
+- .all
+  - returns an array of all users
+
+- #log_exercise(exercise, weight, reps)
+
+- #get_exercise_info(exercise)
+  - returns an array of logs for the specified exercise for the user
+
+#### Exercise
+- #user
+  - returns all unique users who performed this exercise
+- #logs
+  - returns all logs this exercise is part of
 - .all
   - returns an array of all drivers
-- .mileage_cap(distance)
-  - takes an argument of a distance (float) and returns all drivers who have exceeded that mileage
+- #average_weight
+  - returns the average weight for lifted for this exercise
+- #strongest_lifter
+  - returns the user who lifted the heaviest weight for this exercise
 
-#### Ride
-- #passenger
-  - returns the passenger object for that ride
-- #driver
-  - returns the driver object for that ride
-- .average_distance
-  - should find the average distance of all rides
+
+#### Log
+- a log is initialized with (exercise, weight, reps, user)
+- #user
+  - returns the user object for this log
+- #exercise
+  - returns the exercise object for this log
